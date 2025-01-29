@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const otpGenerator = require('otp-generator'); 
-const User = require('../models/AttendanceUser')
-
 require('dotenv').config();
 
 const Otp = require('../models/Otp');
