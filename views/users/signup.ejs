@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,6 +6,107 @@
     <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        #form-main-div {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #4b5c6b;
+        }
+        .message {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #888;
+        }
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #4b5c6b;
+            text-align: left;
+            display: block;
+            margin-top: 15px;
+        }
+        .input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fafafa;
+            font-size: 14px;
+            color: #333;
+        }
+        .input:focus {
+            border-color: #4b5c6b;
+            outline: none;
+        }
+        .send-otp {
+            background-color: #4b5c6b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .send-otp:hover {
+            background-color: #3a4b60;
+        }
+        .submit {
+            background-color: #3a4b60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .submit:hover {
+            background-color: #4b5c6b;
+        }
+        .signin {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+        .signin a {
+            color: #4b5c6b;
+            text-decoration: none;
+        }
+        .signin a:hover {
+            text-decoration: underline;
+        }
+        #phone-blk, #otp-field {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,30 +117,29 @@
 
             <div id="email-blk">
                 <label> Email </label>
-                <input required placeholder="" type="email" class="input" name="email" id="email">
+                <input required placeholder="Enter your email" type="email" class="input" name="email" id="email">
             </div>
 
-            <div id="otp-field" style="display: none;">
-                    <label>Enter Email OTP </label>
-                    <input required placeholder="" type="text" class="input" name="otp" id="otp">
+            <div id="otp-field">
+                <label>Enter Email OTP</label>
+                <input required placeholder="Enter OTP" type="text" class="input" name="otp" id="otp">
             </div>
 
             <button type="button" class="send-otp" id="send-otp">Send OTP</button>
 
             <label> Name </label>
-                <input required placeholder="" type="text" class="input" name="name">
+            <input required placeholder="Enter your full name" type="text" class="input" name="name">
             
             <label> Password </label>    
-                <input required placeholder="" type="password" class="input" name="password">
+            <input required placeholder="Enter your password" type="password" class="input" name="password">
             
-            <label>Conform Password </label>
-                <input required placeholder="" type="password" class="input" name="confirmpassword">
+            <label>Confirm Password</label>
+            <input required placeholder="Confirm your password" type="password" class="input" name="confirmpassword">
             
-                <div id="phone-blk">
-                    <label> Mobile Number </label>
-                    <input required placeholder="" type="Number" class="input" name="contactNumber" id="email">
-                </div>
-           
+            <div id="phone-blk">
+                <label> Mobile Number </label>
+                <input required placeholder="Enter your mobile number" type="number" class="input" name="contactNumber">
+            </div>
             
             <button type="submit" class="submit" style="display: none;" id="submit-button">Submit</button>
             
@@ -76,7 +177,7 @@
                 alert('An error occurred while sending OTP.');
             }
         });
-
     </script>
+
 </body>
 </html>
