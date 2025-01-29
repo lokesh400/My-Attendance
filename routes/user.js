@@ -75,7 +75,7 @@ router.post('/signup', async (req, res) => {
 // Login route
 router.get("/login", (req, res) => {
     
-    res.render("./users/login.ejs" ,{message:"Login Successful"});
+    res.render("./users/login.ejs" ,{messages:"Login Successful"});
 });
 
 router.post("/login", async (req, res, next) => {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Attendance</title>
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/toast.css">
     <link rel="stylesheet" href="/css/myProfile.css">
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="card" style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+    <div class="card" style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 95%; margin: 20px auto;">
         <div class="card-content">
           <p class="card-title">Hello, <%= user.name %></p>
           <p class="card-para"><%= user.email %></p>
@@ -70,27 +71,21 @@
         <% } %>
 
         <section>
-                <div class="btn btn-primary" style="position: fixed; bottom: 0; width: 100%;
-                left: 0;">
-                    <i class="fas fa-plus-circle"></i>
+                <div class="btn btn-primary" style="position: fixed; bottom: 0; width: 100%;left: 0; height: 50px; padding-top: 10px;">
+                    <i class="fas fa-plus-circle" style="color: white;"></i>
                     <a href="/add/new/subject" style="text-decoration: none; color: white; font-size: 1rem;">Add Subject</a>
                 </div>
         </section>
     </div>
 
     <script src="/js/toast.js" ></script>
-    
- <link rel="manifest" href="/manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-      console.log('Service Worker registered with scope:', registration.scope);
-    }).catch((error) => {
-      console.log('Service Worker registration failed:', error);
-    });
+    <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(() => console.log("Service Worker Registered"))
+      .catch(error => console.log("Service Worker Registration Failed", error));
   }
-
-
 </script>
+
 </body>
 </html>

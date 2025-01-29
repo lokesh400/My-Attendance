@@ -83,7 +83,6 @@ router.post('/delete-subject/:subjectId', async (req, res) => {
         if (!subject) {
             return res.status(404).send("Subject not found for this user");
         }
-  
         console.log("Found Subject:", subject);
         res.render("./class/thisSubject.ejs", { subject: subject });
     } catch (error) {
