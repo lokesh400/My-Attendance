@@ -74,8 +74,8 @@ router.post('/signup', async (req, res) => {
 
 // Login route
 router.get("/login", (req, res) => {
-    req.flash('error_msg', 'Welcome back');
-    res.render("./users/login.ejs");
+    
+    res.render("./users/login.ejs" ,{message:"Login Successful"});
 });
 
 router.post("/login", async (req, res, next) => {
