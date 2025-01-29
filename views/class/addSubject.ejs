@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #new-subject-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+    </style>
+    <script>
+        function toggleFields() {
+            var subjectNameField = document.getElementById('subjectName');
+            var attendanceField = document.getElementById('attendancePerClass');
+            if (subjectNameField.value !== '') {
+                attendanceField.classList.remove('hidden');
+            } else {
+                attendanceField.classList.add('hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <section id="new-subject-form">
+        <h2>Add New Subject</h2>
+        <form action="/user/add/new/subject" method="POST">
+            <div class="form-group">
+                <label for="subjectName">Subject Name</label>
+                <input type="text" id="subjectName" name="subjectName" oninput="toggleFields()" placeholder="Enter subject name">
+            </div>
+
+            <div class="form-group hidden" id="attendancePerClass">
+                <label for="attendancePerClass">Attendance per Class</label>
+                <input type="number" name="attendancePerClass" min="0" max="100" placeholder="Enter attendance percentage">
+            </div>
+
+            <button type="submit">Add Subject</button>
+        </form>
+    </section>
+
+</body>
+</html>

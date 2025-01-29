@@ -1,0 +1,16 @@
+<section id="toast-cont">
+    <% if (messages.success && messages.success.length > 0) { %>
+        <div class="flash-message success">
+            <div class="toast-loader"></div>
+            <span><%= messages.success %></span>
+        </div>
+    <% } %>
+
+    <!-- Display Error Message -->
+    <% if (messages.error && messages.error.length > 0) { %>
+        <div class="flash-message error">
+            <div class="toast-loader"></div>
+            <span><%= messages.error %></span>
+        </div>
+    <% } %>
+</section>

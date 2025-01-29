@@ -1,0 +1,168 @@
+body {
+    /* background-color: #f0f2f5; */
+    font-family: 'Arial', sans-serif;
+}
+.container {
+    width: 100%;
+}
+.card {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+.card-body {
+    padding: 30px;
+}
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+.card-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.progress {
+    height: 20px;
+    border-radius: 10px;
+}
+.progress-bar {
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+.low-attendance {
+    background-color: #e74c3c !important; /* Red for low attendance */
+}
+.bg-success {
+    background-color: #28a745 !important; /* Green for good attendance */
+}
+.btn {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+}
+.btn-success, .btn-danger {
+    transition: background-color 0.3s ease;
+}
+.btn-success:hover {
+    background-color: #218838;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+.btn-back {
+    background-color: #007bff;
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.btn-back:hover {
+    background-color: #0056b3;
+}
+.text-center {
+    text-align: center;
+}
+.mt-3, .mt-2 {
+    margin-top: 20px;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.delete-btn {
+    background-color: #dc3545;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.delete-btn:hover {
+    background-color: #c82333;
+}
+.attendance-buttons {
+    position: fixed;
+    bottom: 20px; /* Space from the bottom of the screen */
+    left: 50%; /* Position the buttons in the center horizontally */
+    transform: translateX(-50%); /* Offset by 50% of the width to center */
+    display: flex;
+    justify-content: space-between;
+    width: 90%; /* Total width of both buttons with 4% space between */
+    max-width: 600px; /* Optional: limit max width if you don't want them to stretch too much */
+}
+
+.attendance-buttons-2 {
+    bottom: 20px; /* Space from the bottom of the screen */
+    display: flex;
+    margin: auto;
+    /* width: 400px; */
+    justify-content: space-between;
+    width: 90%; /* Total width of both buttons with 4% space between */
+}
+
+.attendance-buttons-2 button {
+    width: 48%; /* Each button takes 48% of the width */
+}
+
+.attendance-buttons button {
+    width: 48%; /* Each button takes 48% of the width */
+}
+
+#edit-form-container.hidden {
+    display: none; /* Hide the form initially */
+}
+
+.form-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white; /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInFromRight 0.5s ease-out forwards; /* Animation for sliding in */
+}
+
+@keyframes slideInFromRight {
+    0% {
+        right: -100%; /* Start from the right off the screen */
+    }
+    100% {
+        right: 0; /* Slide to the right position */
+    }
+}
+
+#edit-form-container {
+    position: absolute;
+    top: 0;
+    right: -100%; /* Initially position the form off the screen */
+    width: 100%;
+    height: 100vh; /* Make the form cover the full screen */
+    background-color: white;
+    padding: 20px;
+    border-radius: 0;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+
+    overflow-y: auto;
+}
+
+#edit-form-container.show {
+    display: block; /* Make the form visible */
+}
+
+#edit-form-container input,
+#edit-form-container button {
+    width: 100%;
+}
+
+#edit-form-container form {
+    max-width: 600px;
+    margin: 0 auto;
+}
