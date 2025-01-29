@@ -97,8 +97,6 @@ router.post("/login", async (req, res, next) => {
                 req.flash('error_msg', 'Login failed. Please try again.');
                 return res.redirect("/user/login");
             }
-            // Flash a success message and redirect based on user role
-            
                 res.redirect("/"); // Redirect to student page
         });
     })(req, res, next);

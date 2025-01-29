@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Attendance</title>
     <link rel="manifest" href="/manifest.json">
-    if ('serviceWorker' in navigator) {
+    <script>
+      if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
             .then(() => console.log("Service Worker Registered"))
             .catch((err) => console.log("Service Worker Failed", err));
-    }
+      }
+    </script>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="/css/toast.css">
     <link rel="stylesheet" href="/css/myProfile.css">

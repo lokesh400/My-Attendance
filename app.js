@@ -91,7 +91,7 @@ app.use("/user",otprouter);
 
 app.get("/", ensureAuthenticated,async (req,res)=>{
  const user = await User.findById(req.user._id);   
- res.render("./index.ejs",{user, messages:req.flash()})
+ res.render("./layout.ejs",{user, messages:req.flash()})
 })
 
 
