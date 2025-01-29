@@ -35,56 +35,63 @@ router.post('/user/add/new/subject', async (req, res) => {
 });
 
 router.post('/delete-subject/:subjectId', async (req, res) => {
-  const subjectId = req.params.subjectId;
+    const subjectId = req.params.subjectId;
+  
+    try {
+        // Find and remove the subject by its ID from the User's subjects
+        const user = await User.findById(req.user._id);
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+  
+        // Remove the subject from the user's subjects array
+        const subjectIndex = user.subject.findIndex(subject => subject._id.toString() === subjectId);
+        if (subjectIndex === -1) {
+            return res.status(404).send('Subject not found');
+        }
+  
+        user.subject.splice(subjectIndex, 1); // Remove the subject from the array
+  
+        // Save the updated user
+        await user.save();
+  
+        req.flash('success', 'Subject deleted successfully!');
+        res.redirect('/'); // Redirect back to the home page or a list of subjects
+    } catch (error) {
+        console.error('Error deleting subject:', error);
+        req.flash('error', 'Error deleting subject');
+        res.status(500).send('Error deleting subject');
+    }
+  });
+  
 
-  try {
-      // Find the user by their ID (assuming req.user._id contains the user's ID)
-      const user = await User.findById(req.user._id);
-      if (!user) {
-          return res.status(404).send('User not found');
-      }
-
-      // Remove the subject from the user's subjects array
-      user.subject = user.subject.filter(subject => subject._id.toString() !== subjectId);
-
-      // Save the updated user
-      await user.save();
-      req.flash('success', 'Subject deleted successfully!');
-      // Redirect back to the home page or to a list of subjects
-      res.redirect('/');
-  } catch (error) {
-      console.error('Error deleting subject:', error);
-      req.flash('error', 'Error deleting subject');
-      res.status(500).send('Error deleting subject');
-  }
-});
-
-router.get("/show/this/subject/:subjectName", async (req, res) => {
-  try {
-      const { subjectName } = req.params;
-      const userId = req.user._id;
-
-      // Find the user by their ID
-      const user = await User.findById(userId);
-
-      if (!user) {
-          return res.status(404).send("User not found");
-      }
-
-      // Find the subject inside the user's subject array
-      const subject = user.subject.find(sub => sub.subjectName === subjectName);
-
-      if (!subject) {
-          return res.status(404).send("Subject not found for this user");
-      }
-
-      console.log("Found Subject:", subject);
-      res.render("./class/thisSubject.ejs", { subject });
-  } catch (error) {
-      console.error("Error fetching subject:", error);
-      res.status(500).send("Server error");
-  }
-});
+  router.get("/show/this/subject/:subjectId", async (req, res) => {
+    try {
+        const subjectId = req.params.subjectId;
+        const userId = req.user._id;
+  
+        // Find the user by their ID
+        const user = await User.findById(userId);
+  
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+  
+        // Find the subject inside the user's subject array
+        const subject = user.subject.find(subject => subject._id.toString() === subjectId);
+  
+        if (!subject) {
+            return res.status(404).send("Subject not found for this user");
+        }
+  
+        console.log("Found Subject:", subject);
+        res.render("./class/thisSubject.ejs", { subject: subject });
+    } catch (error) {
+        console.error("Error fetching subject:", error);
+        res.status(500).send("Server error");
+    }
+  });
+  
 
 router.post('/edit-subject/:subjectId', async (req, res) => {
     const { subjectName, attendancePerClass, totalClasses, attendedClasses } = req.body;

@@ -35,7 +35,7 @@
                 totalAttended += subject.attendedClasses;
                 const attendancePercentage = subject.totalClasses > 0 ? ((subject.attendedClasses / subject.totalClasses) * 100).toFixed(2) : 0;
             %>
-                <a style="color: black; text-decoration: none;" href="/show/this/subject/<%= subject.subjectName %>">
+                <a style="color: black; text-decoration: none;" href="/show/this/subject/<%= subject._id %>">
                     <div class="subject-card">
                         <div class="info">
                             <p class="subject-name"><strong><%= subject.subjectName %></strong></p>
