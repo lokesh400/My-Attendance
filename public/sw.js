@@ -1,10 +1,12 @@
-const CACHE_NAME = "my-attendance-cache-v1";
-const urlsToCache = ["/", "/styles.css", "/script.js"];
-
 self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(urlsToCache);
+        caches.open("app-cache").then((cache) => {
+            return cache.addAll([
+                "/",
+                "/index.css",  // Update with your CSS file
+                "/icons/icon-192x192.png",
+                "/icons/icon-512x512.png"
+            ]);
         })
     );
 });
