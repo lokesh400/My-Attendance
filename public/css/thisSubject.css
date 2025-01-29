@@ -100,9 +100,8 @@ body {
     bottom: 20px; /* Space from the bottom of the screen */
     display: flex;
     margin: auto;
-    /* width: 400px; */
     justify-content: space-between;
-    width: 90%; /* Total width of both buttons with 4% space between */
+    width: 100%; /* Total width of both buttons with 4% space between */
 }
 
 .attendance-buttons-2 button {
@@ -144,12 +143,9 @@ body {
     top: 0;
     right: -100%; /* Initially position the form off the screen */
     width: 100%;
-    height: 100vh; /* Make the form cover the full screen */
     background-color: white;
     padding: 20px;
     border-radius: 0;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-
     overflow-y: auto;
 }
 
@@ -163,6 +159,5 @@ body {
 }
 
 #edit-form-container form {
-    max-width: 600px;
     margin: 0 auto;
 }

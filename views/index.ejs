@@ -12,14 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="card" style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 95%; margin: 20px auto;">
+    <div class="card" style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 95%; margin: 20px auto; border-radius: 30px;">
         <div class="card-content">
-          <p class="card-title">Hello, <%= user.name %></p>
+          <p class="card-title"><%= user.name %></p>
           <p class="card-para"><%= user.email %></p>
         </div>
         <section>
             <h1 id="overallAttendance">Calculating...</h1>
-            <p style="font-size: 1.2rem;">Overall Attendance</p>
+            
             <div id="loader" class="loader"></div> <!-- Loader animation -->
         </section>
       </div>
@@ -27,8 +27,6 @@
     <%- include('./components/toast.ejs') %>
 
     <div class="container">
-        <h1>Your Subjects</h1>
-
         <% if (user.subject.length > 0) { %>
             <% let totalClasses = 0, totalAttended = 0; %>
             <% user.subject.forEach(subject => { 
@@ -69,11 +67,10 @@
         <% } else { %>
             <p class="no-subject">You have no subjects added yet. Start by adding a subject.</p>
         <% } %>
-
         <section>
-                <div class="btn btn-primary" style="position: fixed; bottom: 0; width: 100%;left: 0; height: 50px; padding-top: 10px;">
-                    <i class="fas fa-plus-circle" style="color: white;"></i>
-                    <a href="/add/new/subject" style="text-decoration: none; color: white; font-size: 1rem;">Add Subject</a>
+                <div class="btn btn-primary" style="position: fixed; bottom: 0; width: 100%;left: 0; height: 50px; padding-top: 10px; border-radius: 0px;">
+                    
+                    <a href="/add/new/subject" style="text-decoration: none; color: white; font-size: 1rem;"> &#43; Add Subject</a>
                 </div>
         </section>
     </div>

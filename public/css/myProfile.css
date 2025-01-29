@@ -1,14 +1,11 @@
 .card {
     width: 100%;
     height: 200px;
-    /* background-color: #4158D0; */
-    background-image: linear-gradient(43deg, #d04141 0%, #c85050 46%, #ff7070 100%);
+    background-color: #4158D0;
+    background-image: linear-gradient( #4158D0 0%,#4158D0 46%, #4158D0 100%);
     border-radius: 8px;
     color: white;
     overflow: hidden;
-    /* position: relative;
-    transform-style: preserve-3d;
-    perspective: 1000px; */
     transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
     cursor: pointer;
   }
