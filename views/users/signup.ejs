@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,6 +6,96 @@
     <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+
+        #form-main-div {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 10px 0 5px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .send-otp, .submit {
+            width: 100%;
+            padding: 10px;
+            background: #6e8efb;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .send-otp:hover, .submit:hover {
+            background: #5a7be2;
+        }
+
+        .signin {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signin a {
+            color: #6e8efb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signin a:hover {
+            text-decoration: underline;
+        }
+
+        #otp-field, #submit-button {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div id="form-main-div">
@@ -13,35 +104,34 @@
             <p class="message">Signup now and get full access to our content.</p>
 
             <div id="email-blk">
-                <label> Email </label>
-                <input required placeholder="" type="email" class="input" name="email" id="email">
+                <label>Email</label>
+                <input required type="email" class="input" name="email" id="email">
             </div>
 
-            <div id="otp-field" style="display: none;">
-                    <label>Enter Email OTP </label>
-                    <input required placeholder="" type="text" class="input" name="otp" id="otp">
+            <div id="otp-field">
+                <label>Enter Email OTP</label>
+                <input required type="text" class="input" name="otp" id="otp">
             </div>
 
             <button type="button" class="send-otp" id="send-otp">Send OTP</button>
 
-            <label> Name </label>
-                <input required placeholder="" type="text" class="input" name="name">
+            <label>Name</label>
+            <input required type="text" class="input" name="name">
             
-            <label> Password </label>    
-                <input required placeholder="" type="password" class="input" name="password">
+            <label>Password</label>    
+            <input required type="password" class="input" name="password">
             
-            <label>Conform Password </label>
-                <input required placeholder="" type="password" class="input" name="confirmpassword">
+            <label>Confirm Password</label>
+            <input required type="password" class="input" name="confirmpassword">
             
-                <div id="phone-blk">
-                    <label> Mobile Number </label>
-                    <input required placeholder="" type="Number" class="input" name="contactNumber" id="email">
-                </div>
+            <div id="phone-blk">
+                <label>Mobile Number</label>
+                <input required type="number" class="input" name="contactNumber">
+            </div>
            
+            <button type="submit" class="submit" id="submit-button">Submit</button>
             
-            <button type="submit" class="submit" style="display: none;" id="submit-button">Submit</button>
-            
-            <p class="signin">Already have an account? <a href="/user/login">Signin</a></p>
+            <p class="signin">Already have an account? <a href="/user/login">Sign in</a></p>
         </form>
     </div>
 
@@ -58,11 +148,10 @@
                 document.getElementById('email-blk').style.display = 'none';
                 document.getElementById('phone-blk').style.display = 'block';
                 document.getElementById('otp-field').style.display = 'block';
+                
                 const response = await fetch('/user/new/send-otp', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email }),
                 });
 
