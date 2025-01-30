@@ -155,7 +155,7 @@
                 document.getElementById('email-blk').style.display = 'none';
                 document.getElementById('phone-blk').style.display = 'block';
                 document.getElementById('otp-field').style.display = 'block';
-                const response = await fetch('/new/send-otp', {
+                const response = await fetch('/user/new/send-otp', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -169,7 +169,7 @@
                 document.getElementById('submit-button').style.display = 'block';
             } catch (error) {
                 console.error('Error sending OTP:', error);
-                alert('An error occurred while sending OTP.');
+                alert(error);
             }
         });
     </script>
