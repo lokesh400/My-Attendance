@@ -9,7 +9,7 @@ const Otp = require('../models/Otp');
 
 router.post('/new/send-otp', async (req, res) => {
     const { email } = req.body;
-
+ 
     const otp = otpGenerator.generate(6, { 
         digits: true, 
         upperCaseAlphabets: false, 
@@ -37,7 +37,7 @@ router.post('/new/send-otp', async (req, res) => {
                 from:"lokeshbadgujjar401@gmail.com",
                 to: `${email}`,
                 subject: 'Your OTP Code',
-                text: `your otp to create your account is ${otp}`,
+                text: ` The otp to reset your password on The Test Pulse is ${otp}`,
             });
            } catch(error){
             transporter.sendMail(mailOptions,(error,info)=>{
